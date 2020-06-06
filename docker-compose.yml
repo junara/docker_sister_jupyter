@@ -1,0 +1,14 @@
+version: '3'
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - JUPYTER_TOKEN=jupyter
+    ports:
+      - 127.0.0.1:8888:8888
+    volumes:
+      - ./work:/home/jovyan/work:cached
+      - ./cache/.sister:/home/jovyan/.sister:delegated
+      - ./requirements.txt:/home/jovyan/requirements.txt
